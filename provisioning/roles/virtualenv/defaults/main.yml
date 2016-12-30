@@ -1,0 +1,8 @@
+---
+virtualenv_root: /opt/.virtualenv
+virtualenv_pip_version: 9.0.1
+virtualenv_version: 15.1.0
+# virtualenv_python_version: 2.7.13
+virtualenv_python: /usr/bin/python
+virtualenv_create_venv: yes
+virtualenv_name: virtualenv

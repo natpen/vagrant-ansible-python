@@ -1,0 +1,5 @@
+- name: install pip
+  apt: name=python-pip update_cache=yes
+
+- name: pip install virtualenv version
+  pip: "name=virtualenv version={{virtualenv_version}}"

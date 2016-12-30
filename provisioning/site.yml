@@ -1,0 +1,12 @@
+---
+- hosts: project-name
+  gather_facts: yes
+
+  vars_files:
+    - vars/project-name.yml
+
+  become: yes
+  roles:
+    - python-env
+    - pyenv
+    - virtualenv

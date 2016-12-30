@@ -1,0 +1,22 @@
+- name: "install dependencies"
+  apt: pkg={{item}} update_cache=yes
+  with_items:
+      - git
+      - make
+      - build-essential
+      - libssl-dev
+      - zlib1g-dev
+      - libbz2-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - wget
+      - curl
+      - llvm
+
+- name: "git install pyenv"
+  git: repo=https://github.com/yyuu/pyenv.git
+    dest={{pyenv_root}}
+    version={{pyenv_version}}
+
+- name: "generate /usr/bin/pyenv"
+  template: src=binary.j2 dest=/usr/bin/pyenv mode=u+x

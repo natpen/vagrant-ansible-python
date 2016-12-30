@@ -1,0 +1,16 @@
+- name: "Install python version"
+  shell: pyenv install {{pyenv_python_version}}
+    creates="{{pyenv_root}}/versions/{{pyenv_python_version}}"
+
+- name: "Create virtualenv"
+  shell: virtualenv --python={{pyenv_root}}/versions/{{pyenv_python_version}}/bin/python {{virtualenv_root}}/{{virtualenv_name}}
+    creates="{{virtualenv_root}}/{{virtualenv_name}}"
+
+- name: "Set permissions on virtualenv"
+  file: "path={{virtualenv_root}}/{{virtualenv_name}} state=directory recurse=yes owner=vagrant group=vagrant"
+
+- name: "Install project dependencies"
+  pip:
+    requirements: /project-name/requirements.txt
+    virtualenv: "{{virtualenv_root}}/{{virtualenv_name}}"
+    # extra_args: -i https://example.com/pypi/simple
