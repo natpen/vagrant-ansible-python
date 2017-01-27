@@ -1,9 +1,9 @@
 - name: "Install python version"
-  shell: pyenv install {{pyenv_python_version}}
-    creates="{{pyenv_root}}/versions/{{pyenv_python_version}}"
+  shell: pyenv install {{python_version}}
+    creates="{{pyenv_root}}/versions/{{python_version}}"
 
 - name: "Create virtualenv"
-  shell: virtualenv --python={{pyenv_root}}/versions/{{pyenv_python_version}}/bin/python {{virtualenv_root}}/{{virtualenv_name}}
+  shell: virtualenv --python={{pyenv_root}}/versions/{{python_version}}/bin/python {{virtualenv_root}}/{{virtualenv_name}}
     creates="{{virtualenv_root}}/{{virtualenv_name}}"
 
 - name: "Set permissions on virtualenv"
